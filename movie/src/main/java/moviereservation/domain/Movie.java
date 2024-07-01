@@ -28,11 +28,6 @@ public class Movie {
 
     @PostPersist
     public void onPostPersist() {
-        TicketDecreased ticketDecreased = new TicketDecreased(this);
-        ticketDecreased.publishAfterCommit();
-
-        TicketIncreased ticketIncreased = new TicketIncreased(this);
-        ticketIncreased.publishAfterCommit();
     }
 
     @PostUpdate

@@ -20,6 +20,7 @@ public class Notification {
     private Long reserveId;
 
     private String reserveStatus;
+    private String userId;
 
     public static NotificationRepository repository() {
         NotificationRepository notificationRepository = NotificationApplication.applicationContext.getBean(
@@ -30,24 +31,13 @@ public class Notification {
 
     //<<< Clean Arch / Port Method
     public static void notify(TicketDecreased ticketDecreased) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
+        
         Notification notification = new Notification();
+        notification.setReserveId(ticketDecreased.getReserveId());
+        notification.set
         repository().save(notification);
 
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(ticketDecreased.get???()).ifPresent(notification->{
-            
-            notification // do something
-            repository().save(notification);
-
-
-         });
-        */
+       
 
     }
 

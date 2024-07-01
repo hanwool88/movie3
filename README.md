@@ -46,7 +46,7 @@ mvn spring-boot:run
 ```
 - notification
 ```
- http :8088/notifications id="id" reserveId="reserveId" reserveStatus="reserveStatus" 
+ http :8088/notifications id="id" reserveId="reserveId" reserveStatus="reserveStatus" userId="userId" 
 ```
 
 

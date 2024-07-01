@@ -14,4 +14,5 @@ public class TicketIncreased extends AbstractEvent {
     private String movieName;
     private Long reserveId;
     private String date;
+    private String userId;
 }

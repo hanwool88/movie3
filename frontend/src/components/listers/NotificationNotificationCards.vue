@@ -111,6 +111,7 @@
             me.newValue = {
                 'reserveId': 0,
                 'reserveStatus': '',
+                'userId': '',
             }
         },
         methods:{

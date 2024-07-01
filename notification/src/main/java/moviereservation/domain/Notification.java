@@ -21,6 +21,8 @@ public class Notification {
 
     private String reserveStatus;
 
+    private String userId;
+
     public static NotificationRepository repository() {
         NotificationRepository notificationRepository = NotificationApplication.applicationContext.getBean(
             NotificationRepository.class

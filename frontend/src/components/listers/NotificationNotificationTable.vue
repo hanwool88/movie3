@@ -69,6 +69,7 @@
                     { text: "id", value: "id" },
                     { text: "reserveId", value: "reserveId" },
                     { text: "reserveStatus", value: "reserveStatus" },
+                    { text: "userId", value: "userId" },
                 ],
             notification : [],
             newValue: {},
@@ -88,6 +89,7 @@
             this.newValue = {
                 'reserveId': 0,
                 'reserveStatus': '',
+                'userId': '',
             }
         },
         methods: {

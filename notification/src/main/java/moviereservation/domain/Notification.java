@@ -29,7 +29,7 @@ public class Notification {
     }
 
     //<<< Clean Arch / Port Method
-    public static void notify(ReserveCanceled reserveCanceled) {
+    public static void notify(TicketDecreased ticketDecreased) {
         //implement business logic here:
 
         /** Example 1:  new item 
@@ -40,7 +40,7 @@ public class Notification {
 
         /** Example 2:  finding and process
         
-        repository().findById(reserveCanceled.get???()).ifPresent(notification->{
+        repository().findById(ticketDecreased.get???()).ifPresent(notification->{
             
             notification // do something
             repository().save(notification);
@@ -53,7 +53,7 @@ public class Notification {
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
-    public static void notify(Reserved reserved) {
+    public static void notify(TicketIncreased ticketIncreased) {
         //implement business logic here:
 
         /** Example 1:  new item 
@@ -64,7 +64,31 @@ public class Notification {
 
         /** Example 2:  finding and process
         
-        repository().findById(reserved.get???()).ifPresent(notification->{
+        repository().findById(ticketIncreased.get???()).ifPresent(notification->{
+            
+            notification // do something
+            repository().save(notification);
+
+
+         });
+        */
+
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public static void notify(OutOfTicket outOfTicket) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Notification notification = new Notification();
+        repository().save(notification);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(outOfTicket.get???()).ifPresent(notification->{
             
             notification // do something
             repository().save(notification);

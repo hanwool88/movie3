@@ -25,14 +25,14 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='ReserveCanceled'"
+        condition = "headers['type']=='TicketDecreased'"
     )
-    public void wheneverReserveCanceled_Notify(
-        @Payload ReserveCanceled reserveCanceled
+    public void wheneverTicketDecreased_Notify(
+        @Payload TicketDecreased ticketDecreased
     ) {
-        ReserveCanceled event = reserveCanceled;
+        TicketDecreased event = ticketDecreased;
         System.out.println(
-            "\n\n##### listener Notify : " + reserveCanceled + "\n\n"
+            "\n\n##### listener Notify : " + ticketDecreased + "\n\n"
         );
 
         // Sample Logic //
@@ -41,11 +41,29 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='Reserved'"
+        condition = "headers['type']=='TicketIncreased'"
     )
-    public void wheneverReserved_Notify(@Payload Reserved reserved) {
-        Reserved event = reserved;
-        System.out.println("\n\n##### listener Notify : " + reserved + "\n\n");
+    public void wheneverTicketIncreased_Notify(
+        @Payload TicketIncreased ticketIncreased
+    ) {
+        TicketIncreased event = ticketIncreased;
+        System.out.println(
+            "\n\n##### listener Notify : " + ticketIncreased + "\n\n"
+        );
+
+        // Sample Logic //
+        Notification.notify(event);
+    }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='OutOfTicket'"
+    )
+    public void wheneverOutOfTicket_Notify(@Payload OutOfTicket outOfTicket) {
+        OutOfTicket event = outOfTicket;
+        System.out.println(
+            "\n\n##### listener Notify : " + outOfTicket + "\n\n"
+        );
 
         // Sample Logic //
         Notification.notify(event);

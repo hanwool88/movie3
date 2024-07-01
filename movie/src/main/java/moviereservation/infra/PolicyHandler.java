@@ -22,5 +22,26 @@ public class PolicyHandler {
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='Reserved'"
+        )
+    public void wheneverReserved(
+        @Payload Reserved reserved
+    ) {
+        Reserved event = reserved;
+        // Sample Logic //
+        Movie.decreaseTicket(event);
+    }
+
+    @StreamListener(value = KafkaProcessor.INPUT, condition = "headers['type']=='ReserveCanceled'")
+    public void wheneverReserveCanceled(
+        @Payload ReserveCanceled reserveCanceled
+    ) {
+        ReserveCanceled event = reserveCanceled;
+        // Sample Logic //
+        Movie.increaseTicket(event);
+    }
 }
 //>>> Clean Arch / Inbound Adaptor

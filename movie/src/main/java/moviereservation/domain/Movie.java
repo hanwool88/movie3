@@ -50,56 +50,47 @@ public class Movie {
 
     //<<< Clean Arch / Port Method
     public static void decreaseTicket(Reserved reserved) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Movie movie = new Movie();
-        repository().save(movie);
-
-        TicketDecreased ticketDecreased = new TicketDecreased(movie);
-        ticketDecreased.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
         
-        repository().findById(reserved.get???()).ifPresent(movie->{
+        repository().findById(reserved.getMovieId()).ifPresent(movie->{
             
-            movie // do something
-            repository().save(movie);
-
-            TicketDecreased ticketDecreased = new TicketDecreased(movie);
-            ticketDecreased.publishAfterCommit();
+            if(movie.getStock() > reserved.getAmount()) {
+                movie.setStock(movie.getStock() - reserved.getAmount());
+                repository().save(movie);
+    
+                TicketDecreased ticketDecreased = new TicketDecreased(movie);
+                ticketDecreased.setReserveId(reserved.getId());
+                ticketDecreased.publishAfterCommit();
+            }
+            else {
+                OutOfTicket outOfTicket = new OutOfTicket(movie);
+                outOfTicket.setReserveId(reserved.getId());
+                outOfTicket.publishAfterCommit();
+            }
 
          });
-        */
+        
 
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void increaseTicket(ReserveCanceled reserveCanceled) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Movie movie = new Movie();
-        repository().save(movie);
-
-        TicketIncreased ticketIncreased = new TicketIncreased(movie);
-        ticketIncreased.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
         
-        repository().findById(reserveCanceled.get???()).ifPresent(movie->{
+        repository().findById(reserveCanceled.getMovieId()).ifPresent(movie->{
             
-            movie // do something
-            repository().save(movie);
-
-            TicketIncreased ticketIncreased = new TicketIncreased(movie);
-            ticketIncreased.publishAfterCommit();
+            if(movie.getDate().compareTo(reserveCanceled.getDate()) >= 0) {
+                movie.setStock(movie.getStock() + reserveCanceled.getAmount());
+                repository().save(movie);
+    
+                TicketIncreased ticketIncreased = new TicketIncreased(movie);
+                ticketIncreased.setReserveId(reserveCanceled.getId());
+                ticketIncreased.publishAfterCommit();
+            } else {
+                return;
+            }
 
          });
-        */
+        
 
     }
     //>>> Clean Arch / Port Method

@@ -49,151 +49,33 @@ public class Reserve {
         reserveCanceled.publishAfterCommit();
     }
 
-    //>>> Clean Arch / Port Method
+
 
     //<<< Clean Arch / Port Method
     public static void updateStatus(OutOfTicket outOfTicket) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Reserve reserve = new Reserve();
-        repository().save(reserve);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(outOfTicket.get???()).ifPresent(reserve->{
+        repository().findById(outOfTicket.getReserveId()).ifPresent(reserve ->{
             
-            reserve // do something
+            reserve.setReserveStatus("reserveCanceled");
             repository().save(reserve);
-
-
-         });
-        */
-
+        });
     }
 
-    //>>> Clean Arch / Port Method
-    //<<< Clean Arch / Port Method
+
     public static void updateStatus(TicketIncreased ticketIncreased) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Reserve reserve = new Reserve();
-        repository().save(reserve);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(ticketIncreased.get???()).ifPresent(reserve->{
+        repository().findById(ticketIncreased.getReserveId()).ifPresent(reserve ->{
             
-            reserve // do something
+            reserve.setReserveStatus("reserveCanceled");
             repository().save(reserve);
-
-
-         });
-        */
-
+        });
     }
 
-    //>>> Clean Arch / Port Method
-    //<<< Clean Arch / Port Method
     public static void updateStatus(TicketDecreased ticketDecreased) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Reserve reserve = new Reserve();
-        repository().save(reserve);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(ticketDecreased.get???()).ifPresent(reserve->{
+        repository().findById(ticketDecreased.getReserveId()).ifPresent(reserve ->{
             
-            reserve // do something
+            reserve.setReserveStatus("reserveCompleted");
             repository().save(reserve);
-
-
-         });
-        */
-
+        });
     }
-
-    //>>> Clean Arch / Port Method
-    //<<< Clean Arch / Port Method
-    public static void updateStatus(TicketDecreased ticketDecreased) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Reserve reserve = new Reserve();
-        repository().save(reserve);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(ticketDecreased.get???()).ifPresent(reserve->{
-            
-            reserve // do something
-            repository().save(reserve);
-
-
-         });
-        */
-
-    }
-
-    //>>> Clean Arch / Port Method
-    //<<< Clean Arch / Port Method
-    public static void updateStatus(TicketIncreased ticketIncreased) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Reserve reserve = new Reserve();
-        repository().save(reserve);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(ticketIncreased.get???()).ifPresent(reserve->{
-            
-            reserve // do something
-            repository().save(reserve);
-
-
-         });
-        */
-
-    }
-
-    //>>> Clean Arch / Port Method
-    //<<< Clean Arch / Port Method
-    public static void updateStatus(TicketDecreased ticketDecreased) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Reserve reserve = new Reserve();
-        repository().save(reserve);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(ticketDecreased.get???()).ifPresent(reserve->{
-            
-            reserve // do something
-            repository().save(reserve);
-
-
-         });
-        */
-
-    }
-    //>>> Clean Arch / Port Method
 
 }
 //>>> DDD / Aggregate Root

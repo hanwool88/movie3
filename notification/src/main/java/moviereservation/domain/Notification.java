@@ -20,8 +20,7 @@ public class Notification {
     private Long reserveId;
 
     private String reserveStatus;
-    private String userId;
-
+    
     private String userId;
 
     public static NotificationRepository repository() {
@@ -36,7 +35,8 @@ public class Notification {
         
         Notification notification = new Notification();
         notification.setReserveId(ticketDecreased.getReserveId());
-        notification.setUserId(ticketDecreased.getuserId);
+        notification.setUserId(ticketDecreased.getUserId());
+        notification.setReserveStatus("영화예약완료");
         repository().save(notification);
 
        
@@ -46,48 +46,28 @@ public class Notification {
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void notify(TicketIncreased ticketIncreased) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
+        
         Notification notification = new Notification();
+        notification.setReserveId(ticketIncreased.getReserveId());
+        notification.setUserId(ticketIncreased.getUserId());
+        notification.setReserveStatus("영화예약취소");
         repository().save(notification);
 
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(ticketIncreased.get???()).ifPresent(notification->{
-            
-            notification // do something
-            repository().save(notification);
-
-
-         });
-        */
+       
 
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void notify(OutOfTicket outOfTicket) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
+        
         Notification notification = new Notification();
+        notification.setReserveId(outOfTicket.getReserveId());
+        notification.setUserId(outOfTicket.getUserId());
+        notification.setReserveStatus("영화예약취소");
         repository().save(notification);
 
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(outOfTicket.get???()).ifPresent(notification->{
-            
-            notification // do something
-            repository().save(notification);
-
-
-         });
-        */
+       
 
     }
     //>>> Clean Arch / Port Method

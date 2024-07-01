@@ -59,11 +59,13 @@ public class Movie {
     
                 TicketDecreased ticketDecreased = new TicketDecreased(movie);
                 ticketDecreased.setReserveId(reserved.getId());
+                ticketDecreased.setUserId(reserved.getUserId());
                 ticketDecreased.publishAfterCommit();
             }
             else {
                 OutOfTicket outOfTicket = new OutOfTicket(movie);
                 outOfTicket.setReserveId(reserved.getId());
+                outOfTicket.setUserId(reserved.getUserId());
                 outOfTicket.publishAfterCommit();
             }
 
@@ -84,6 +86,7 @@ public class Movie {
     
                 TicketIncreased ticketIncreased = new TicketIncreased(movie);
                 ticketIncreased.setReserveId(reserveCanceled.getId());
+                ticketIncreased.setUserId(reserveCanceled.getUserId());
                 ticketIncreased.publishAfterCommit();
             } else {
                 return;

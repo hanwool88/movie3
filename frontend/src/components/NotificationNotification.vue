@@ -18,6 +18,7 @@
         <v-card-text>
             <Number label="ReserveId" v-model="value.reserveId" :editMode="editMode" :inputUI="''"/>
             <String label="ReserveStatus" v-model="value.reserveStatus" :editMode="editMode" :inputUI="''"/>
+            <String label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

@@ -13,6 +13,7 @@ public class OutOfTicket extends AbstractEvent {
 
     private Long id;
     private Long reserveId;
+    private String userId;
 
     public OutOfTicket(Movie aggregate) {
         super(aggregate);

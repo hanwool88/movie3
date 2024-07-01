@@ -34,7 +34,7 @@ public class Notification {
         
         Notification notification = new Notification();
         notification.setReserveId(ticketDecreased.getReserveId());
-        notification.set
+        notification.setUserId(ticketDecreased.getuserId);
         repository().save(notification);
 
        

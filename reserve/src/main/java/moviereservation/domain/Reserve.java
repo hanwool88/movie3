@@ -54,7 +54,7 @@ public class Reserve {
     //<<< Clean Arch / Port Method
     public static void updateStatus(OutOfTicket outOfTicket) {
         repository().findById(outOfTicket.getReserveId()).ifPresent(reserve ->{
-            
+            reserve.setUserId(outOfTicket.getUserId());
             reserve.setReserveStatus("reserveCanceled");
             repository().save(reserve);
         });
@@ -63,7 +63,7 @@ public class Reserve {
 
     public static void updateStatus(TicketIncreased ticketIncreased) {
         repository().findById(ticketIncreased.getReserveId()).ifPresent(reserve ->{
-            
+            reserve.setUserId(ticketIncreased.getUserId());
             reserve.setReserveStatus("reserveCanceled");
             repository().save(reserve);
         });
@@ -71,7 +71,7 @@ public class Reserve {
 
     public static void updateStatus(TicketDecreased ticketDecreased) {
         repository().findById(ticketDecreased.getReserveId()).ifPresent(reserve ->{
-            
+            reserve.setUserId(ticketDecreased.getUserId());
             reserve.setReserveStatus("reserveCompleted");
             repository().save(reserve);
         });

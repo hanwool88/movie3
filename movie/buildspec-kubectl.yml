@@ -44,36 +44,36 @@ phases:
           apiVersion: v1
           kind: Service
           metadata:
-            name: user09-movie
+            name: movie
             labels:
-              app: user09-movie
+              app: movie
           spec:
             ports:
               - port: 8080
                 targetPort: 8080
             selector:
-              app: user09-movie
+              app: movie
           EOF
       - |
           cat  <<EOF | kubectl apply -f -
           apiVersion: apps/v1
           kind: Deployment
           metadata:
-            name: user09-movie
+            name: movie
             labels:
-              app: user09-movie
+              app: movie
           spec:
             replicas: 1
             selector:
               matchLabels:
-                app: user09-movie
+                app: movie
             template:
               metadata:
                 labels:
-                  app: user09-movie
+                  app: movie
               spec:
                 containers:
-                  - name: user09-movie
+                  - name: movie
                     image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/user09-movie:$CODEBUILD_RESOLVED_SOURCE_VERSION
                     ports:
                       - containerPort: 8080

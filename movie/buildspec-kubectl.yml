@@ -40,7 +40,7 @@ phases:
       - kubectl config set-context default --cluster=k8s --user=admin
       - kubectl config use-context default
       - |
-          kubectl apply -f - <<EOF
+          cat kubectl apply -f - <<EOF
           apiVersion: v1
           kind: Service
           metadata:
@@ -55,7 +55,7 @@ phases:
               app: movie
           EOF
       - |
-          kubectl apply -f - <<EOF
+          cat kubectl apply -f - <<EOF
           apiVersion: apps/v1
           kind: Deployment
           metadata:

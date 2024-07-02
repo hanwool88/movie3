@@ -22,18 +22,18 @@ phases:
       - echo $AWS_DEFAULT_REGION
       - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
       - echo start command
-      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+      - docker login --username $USERNAME --password $PASSWORD
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
       - cd movie
       - mvn package -B -Dmaven.test.skip=true
-      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/user09-movie:$CODEBUILD_RESOLVED_SOURCE_VERSION  .
+      - docker build -t hanwool88/movie:latest .
   post_build:
     commands:
       - echo Pushing the Docker image...
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/user09-movie:$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - docker push hanwool88/movie:latest
       - echo connect kubectl
       - kubectl config set-cluster k8s --server="$KUBE_URL" --insecure-skip-tls-verify=true
       - kubectl config set-credentials admin --token="$KUBE_TOKEN"
@@ -74,7 +74,7 @@ phases:
               spec:
                 containers:
                   - name: movie
-                    image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/user09-movie:$CODEBUILD_RESOLVED_SOURCE_VERSION
+                    image: hanwool88/movie:latest
                     ports:
                       - containerPort: 8080
                     readinessProbe:

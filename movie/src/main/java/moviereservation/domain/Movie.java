@@ -32,8 +32,6 @@ public class Movie {
 
     @PostUpdate
     public void onPostUpdate() {
-        OutOfTicket outOfTicket = new OutOfTicket(this);
-        outOfTicket.publishAfterCommit();
     }
 
     public static MovieRepository repository() {

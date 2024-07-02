@@ -60,7 +60,7 @@ spring:
         - id: reservelist
           uri: http://reservelist:8080
           predicates:
-            - Path=, 
+            - Path=/reservationLists/**, 
         - id: notification
           uri: http://notification:8080
           predicates:

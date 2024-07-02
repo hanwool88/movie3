@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: movie
-          image: "username/movie:latest"
+          image: "hanwool88/movie:00"
           ports:
             - containerPort: 8080
           readinessProbe:

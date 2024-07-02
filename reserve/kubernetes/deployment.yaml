@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: reserve
-          image: "username/reserve:latest"
+          image: "hanwool88/reserve:00"
           ports:
             - containerPort: 8080
           readinessProbe:

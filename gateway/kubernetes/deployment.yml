@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: username/gateway:latest
+          image: hanwool88/gateway:00
           ports:
             - containerPort: 8080

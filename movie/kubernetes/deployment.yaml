@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
         - name: movie
-          image: "hanwool88/movie:00"
+          image: "hanwool88/movie:07"
           ports:
-            - containerPort: 8080             
+            - containerPort: 8080                                          
           readinessProbe:
             httpGet:
               path: 'movies'
@@ -35,3 +35,9 @@ spec:
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 5
+          env:
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                   name: loglevel-configmap
+                   key: loglevel            

@@ -81,4 +81,8 @@ spring:
           destination: moviereservation
           contentType: application/json
 
+echo:
+  log:
+    level: ${LOG_LEVEL}
+
 

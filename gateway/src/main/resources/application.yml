@@ -56,7 +56,7 @@ spring:
         - id: movie
           uri: http://movie:8080
           predicates:
-            - Path=/movies/**, 
+            - Path=/movies/**,/hello/** 
         - id: reservelist
           uri: http://reservelist:8080
           predicates:

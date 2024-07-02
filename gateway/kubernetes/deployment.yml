@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: hanwool88/gateway:00
+          image: hanwool88/gateway:03
           ports:
             - containerPort: 8080

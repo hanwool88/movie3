@@ -70,10 +70,10 @@ phases:
             template:
               metadata:
                 labels:
-                  app: $_PROJECT_NAME
+                  app: user09-movie
               spec:
                 containers:
-                  - name: $_PROJECT_NAME
+                  - name: user09-movie
                     image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/user09-movie:$CODEBUILD_RESOLVED_SOURCE_VERSION
                     ports:
                       - containerPort: 8080

@@ -7,7 +7,7 @@ env:
 phases:
   install:
     runtime-versions:
-      java: corretto15
+      java: corretto11
       docker: 20
     commands:
       - echo install kubectl
@@ -40,8 +40,61 @@ phases:
       - kubectl config set-context default --cluster=k8s --user=admin
       - kubectl config use-context default
       - aws eks update-kubeconfig --name user09-eks
-      - kubectl apply -f ./kubernetes/deployment.yaml --validate=false
-      - kubectl apply -f ./kubernetes/service.yaml --validate=false
+      - |
+          cat <<EOF | kubectl apply -f -
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: movie
+            labels:
+              app: movie
+          spec:
+            ports:
+              - port: 8080
+                targetPort: 8080
+            selector:
+              app: movie
+          EOF
+      - |
+          cat  <<EOF | kubectl apply -f -
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: movie
+            labels:
+              app: movie
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: movie
+            template:
+              metadata:
+                labels:
+                  app: movie
+              spec:
+                containers:
+                  - name: movie
+                    image: "hanwool88/movie:07"
+                    ports:
+                      - containerPort: 8080
+                    readinessProbe:
+                      httpGet:
+                        path: /movies
+                        port: 8080
+                      initialDelaySeconds: 10
+                      timeoutSeconds: 2
+                      periodSeconds: 5
+                      failureThreshold: 10
+                    livenessProbe:
+                      httpGet:
+                        path: /movies
+                        port: 8080
+                      initialDelaySeconds: 120
+                      timeoutSeconds: 2
+                      periodSeconds: 5
+                      failureThreshold: 5
+          EOF      
 
 cache:
   paths:

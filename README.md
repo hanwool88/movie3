@@ -166,8 +166,8 @@ sudo mv /tmp/eksctl /usr/local/bin
 ![image](./hh/PVC-02.PNG)
 
 # 셀프힐링/무정지배포 - Liveness/Readness Probe
-![image](./hh/ReadinessProbe-03.PNG)
 ![image](./hh/ReadinessProbe-01.PNG)
+![image](./hh/ReadinessProbe-03.PNG)
 ![image](./hh/ReadinessProbe-02.PNG)
 
 

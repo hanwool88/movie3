@@ -55,7 +55,7 @@ phases:
               app: movie
           EOF
       - |
-          cat kubectl apply -f - <<EOF
+          cat <<EOF | kubectl apply -f - 
           apiVersion: apps/v1
           kind: Deployment
           metadata:

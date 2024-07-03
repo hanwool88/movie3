@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     _PROJECT_NAME: "user09-movie"
-         
+          
 phases:
   install:
     runtime-versions:

@@ -3,11 +3,11 @@ version: 0.2
 env:
   variables:
     _PROJECT_NAME: "user09-movie"
-        
+          
 phases:
   install:
     runtime-versions:
-      java: corretto15
+      java: corretto11
       docker: 20
     commands:
       - echo install kubectl
@@ -39,8 +39,9 @@ phases:
       - kubectl config set-credentials admin --token="$KUBE_TOKEN"
       - kubectl config set-context default --cluster=k8s --user=admin
       - kubectl config use-context default
+      - aws eks update-kubeconfig --name user09-eks
       - |
-          cat kubectl apply -f - <<EOF
+          cat <<EOF | kubectl apply -f -
           apiVersion: v1
           kind: Service
           metadata:
@@ -55,7 +56,7 @@ phases:
               app: movie
           EOF
       - |
-          cat kubectl apply -f - <<EOF
+          cat  <<EOF | kubectl apply -f -
           apiVersion: apps/v1
           kind: Deployment
           metadata:
@@ -93,7 +94,7 @@ phases:
                       timeoutSeconds: 2
                       periodSeconds: 5
                       failureThreshold: 5
-          EOF
+          EOF      
 
 cache:
   paths:
